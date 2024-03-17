@@ -111,18 +111,18 @@ select {
     transform-style: preserve-3d;
 }
 
-.hydra-card.visionary-card:hover .card-title {
+.main-wrapper.visionary-objective.desktop .hydra-card.visionary-card:hover .card-title {
     transform: translateZ(80px);
     text-shadow: 0px 10px 40px #000;
 }
 
-.hydra-card.visionary-card:hover .card-text {
+.main-wrapper.visionary-objective.desktop .hydra-card.visionary-card:hover .card-text {
     transform: translateZ(40px);
     text-shadow: 0px 10px 20px #000;
 }
 
-.hydra-card.visionary-card:hover .card-title::before,
-.hydra-card.visionary-card:hover .card-title::after {
+.main-wrapper.visionary-objective.desktop .hydra-card.visionary-card:hover .card-title::before,
+.main-wrapper.visionary-objective.desktop .hydra-card.visionary-card:hover .card-title::after {
     opacity: .5;
 }
 
@@ -137,8 +137,8 @@ select {
     transition: all .3s ease-in-out;
 }
 
-.card-title::before,
-.card-title::after {
+.main-wrapper.visionary-objective.desktop .card-title::before,
+.main-wrapper.visionary-objective.desktop .card-title::after {
     content: '';
     position: absolute;
     top: 50%;
@@ -154,11 +154,11 @@ select {
     transition: all .3s ease-in-out;
 }
 
-.card-title::before {
+.main-wrapper.visionary-objective.desktop .card-title::before {
     left: -10%;
 }
 
-.card-title::after {
+.main-wrapper.visionary-objective.desktop .card-title::after {
     left: 84%;
 }
 
@@ -173,11 +173,50 @@ select {
     transition: all .3s ease-in-out;
 }
 
+.main-wrapper.visionary-objective.mobile {
+    display: none;
+}
 
 
 
+/* - - - - - - - - RESPONSIVITY - - - - - - - - */
 
+@media screen and (max-width: 1024px) {
+    .main-wrapper.visionary-objective.desktop {
+        display: none;
+    }
 
-.hydra-card.visionary-card.tilted {
-    transform: rotate(5deg);
+    .main-wrapper.visionary-objective.mobile {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .main-wrapper.visionary-objective .card-title {
+        font-size: 28px;
+    }
+
+    .main-wrapper.visionary-objective .card-text {
+        line-height: 24px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .hydra-card.visionary-card {
+        padding: 20px 25px 30px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .main-wrapper.visionary-objective.mobile {
+        padding: 25px;
+    }
+
+    .hydra-card.visionary-card {
+        gap: 20px;
+    }
+
+    .main-wrapper.visionary-objective .card-text {
+        font-size: 13px;
+    }
 }
