@@ -14,6 +14,10 @@
 
 
     <link rel="stylesheet" href="style.css">
+
+    <!-- Tilt JS -->
+    <script defer src="https://unpkg.com/vanilla-tilt@1.8.1/lib/vanilla-tilt.js"></script>
+
     <script defer src="app.js"></script>
 
     <title>Hydra Vision</title>
@@ -21,9 +25,12 @@
 
 <body>
 
+    <div class="placeholder"></div>
+
     <section class="main">
         <div class="main-wrapper visionary-objective">
-            <div class="hydra-card visionary-card">
+            <div class="hydra-card visionary-card" data-tilt data-tilt-max='8' data-tilt-reverse="true" data-tilt-glare
+                data-tilt-max-glare='0.2' data-tilt-full-page-listening>
                 <h2 class="card-title">VISIONARY OBJECTIVE</h2>
                 <p class="card-text">
                     Our overall ambition is to decarbonise the planet through pioneering hydrogen and sustainable energy
@@ -36,9 +43,17 @@
                     pushing forward sustainable solutions.
                 </p>
             </div>
+            <!-- 
+            <video class="visionary-video" autoplay loop muted playsinline>
+                <source src="assets/windmill_-_86422_1080p.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+ -->
         </div>
     </section>
-    </main>
+
+    <div class="placeholder"></div>
+
 </body>
 
 </html>

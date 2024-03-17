@@ -51,21 +51,25 @@ select {
     --body-font: 'Montserrat', sans-serif;
 }
 
+.placeholder {
+    height: 90svh;
+    width: 100%;
+}
+
 .main-wrapper.visionary-objective {
     position: relative;
     width: 100%;
     min-height: 70vh;
-
     padding: 40px;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
-    background: url('assets/iswanto-arif-OJ74pFtrYi0-unsplash.jpg') center center/cover no-repeat;
+    background: url('assets/iswanto-arif-OJ74pFtrYi0-unsplash.jpg') center center / cover no-repeat fixed;
+    perspective: 1000px;
+    overflow: hidden;
 }
 
-/* 
+
 .main-wrapper.visionary-objective::before {
     content: '';
     position: absolute;
@@ -75,38 +79,105 @@ select {
     width: 100%;
     height: 100%;
     display: block;
-    background-color: rgba(0, 0, 0, .1);
+    background: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, .2) 15%, rgba(0, 0, 0, .2) 85%, rgba(0, 0, 0, 0.5) 100%);
+
+    z-index: 5;
+}
+
+.visionary-video {
+    position: fixed;
+    top: 0;
+    left: 0;
 
     z-index: 1;
 }
- */
+
 .hydra-card.visionary-card {
+    position: relative;
     width: 100%;
     max-width: 660px;
-    padding: 30px 40px;
+
+    border-radius: 3px;
+    padding: 20px 50px 40px;
 
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 30px;
 
     box-shadow: 0px 10px 50px 0px #000;
-    background-color: var(--color-base);
+    background: rgba(33, 37, 41, .95);
+
+    z-index: 5;
+    transform-style: preserve-3d;
+}
+
+.hydra-card.visionary-card:hover .card-title {
+    transform: translateZ(80px);
+    text-shadow: 0px 10px 40px #000;
+}
+
+.hydra-card.visionary-card:hover .card-text {
+    transform: translateZ(40px);
+    text-shadow: 0px 10px 20px #000;
+}
+
+.hydra-card.visionary-card:hover .card-title::before,
+.hydra-card.visionary-card:hover .card-title::after {
+    opacity: .5;
 }
 
 .card-title {
+    position: relative;
+
     font-family: var(--title-font);
     font-size: 36px;
     font-weight: 500;
     text-align: center;
     color: #ffffff;
+    transition: all .3s ease-in-out;
+}
+
+.card-title::before,
+.card-title::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+
+    width: 150px;
+    height: 1px;
+    display: block;
+
+    background-color: #ffffff;
+
+    opacity: 0;
+
+    transition: all .3s ease-in-out;
+}
+
+.card-title::before {
+    left: -10%;
+}
+
+.card-title::after {
+    left: 84%;
 }
 
 .card-text {
     font-family: var(--body-font);
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 300;
     letter-spacing: 0.5px;
     line-height: 28px;
     text-align: center;
     color: #ffffff;
+    transition: all .3s ease-in-out;
+}
+
+
+
+
+
+
+.hydra-card.visionary-card.tilted {
+    transform: rotate(5deg);
 }
