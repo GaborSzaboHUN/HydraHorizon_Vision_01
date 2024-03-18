@@ -1,4 +1,48 @@
+ScrollReveal().reveal('.card-title',
+    {
+        delay: 500,
+        easing: 'ease-in-out',
+        origin: 'bottom'
+    }
+)
 
+ScrollReveal().reveal('.card-text',
+    {
+        delay: 500,
+        easing: 'ease-in-out',
+        origin: 'bottom'
+    }
+)
+
+ScrollReveal().reveal('.card-title.half-page',
+    {
+        delay: 500,
+        easing: 'ease-in-out',
+        origin: 'right'
+    }
+)
+
+ScrollReveal().reveal('.icon-wrapper:first-child',
+    {
+        delay: 500,
+        easing: 'ease-in-out',
+        origin: 'right'
+    }
+)
+ScrollReveal().reveal('.icon-wrapper:nth-child(2)',
+    {
+        delay: 900,
+        easing: 'ease-in-out',
+        origin: 'right'
+    }
+)
+ScrollReveal().reveal('.icon-wrapper:last-child',
+    {
+        delay: 1300,
+        easing: 'ease-in-out',
+        origin: 'right'
+    }
+)
 
 
 
