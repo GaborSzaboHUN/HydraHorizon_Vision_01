@@ -45,7 +45,7 @@ select {
 /* - - - - END RESET CSS - - - - */
 
 :root {
-    --color-base: #212529;
+    --color-base: #1a1616;
 
     --title-font: 'Oswald', sans-serif;
     --body-font: 'Montserrat', sans-serif;
@@ -60,7 +60,8 @@ select {
     position: relative;
 
     width: 100%;
-    min-height: 70vh;
+    height: 70vh;
+    min-height: 620px;
 
     padding: 40px;
 
@@ -180,8 +181,9 @@ select {
     display: none;
 }
 
-.main-wrapper.holistic-integration {
-    height: 70svh;
+.main-wrapper {
+    height: 50svh;
+    min-height: 470px;
 
     display: flex;
     flex-wrap: nowrap;
@@ -206,30 +208,42 @@ select {
 }
 
 .video-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    /* Ensure full width */
-    height: 100%;
-    /* Ensure full height */
+
     overflow: hidden;
-    position: relative;
+
+    box-shadow: -8px 0px 20px 10px rgba(0, 0, 0, .55);
+
+    z-index: -1;
+}
+
+.video-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: rgba(0, 0, 0, .25);
+    z-index: 1;
 }
 
 .video-container video {
-    max-width: 100%;
-    /* Make the video responsive */
-    max-height: 100%;
-    /* Make the video responsive */
-    width: auto;
-    /* Make the video responsive */
-    height: auto;
-    /* Make the video responsive */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .card-text-wrapper {
@@ -237,8 +251,7 @@ select {
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 150px;
+    justify-content: space-around;
 
     height: 100%;
     width: 100%;
@@ -246,13 +259,9 @@ select {
     padding: 60px 40px;
 
     background-color: var(--color-base);
-    box-shadow: -8px 0px 20px 10px rgba(0, 0, 0, .25);
+    box-shadow: 0px 0px 20px 20px rgba(0, 0, 0, .55);
     transition: all 0.6s ease-in-out;
 
-}
-
-.card-text-wrapper:hover {
-    box-shadow: -8px 0px 20px 10px rgba(0, 0, 0, .55);
 }
 
 .card-text-wrapper::before {
@@ -260,7 +269,6 @@ select {
 
     position: absolute;
     top: 0;
-    right: 0;
 
     display: block;
 
@@ -268,12 +276,20 @@ select {
     height: 0px;
     border-style: solid;
     border-width: 0 200px 200px 0;
-    border-color: transparent rgba(0, 0, 0, 0.05) transparent transparent;
+    border-color: transparent rgba(0, 0, 0, 0.1) transparent transparent;
     transform: rotate(0deg);
 }
 
+.holistic-integration .card-text-wrapper::before {
+    right: 0;
+}
+
+.strategic-partnership .card-text-wrapper::before {
+    left: 0;
+    transform: rotate(270deg);
+}
+
 .card-text-wrapper .card-text {
-    max-width: 70svh;
     text-align: left;
     text-shadow: 0px 4px 10px BLACK;
 }
@@ -298,7 +314,7 @@ select {
 }
 
 .icon-image {
-    width: 80px;
+    width: 60px;
     aspect-ratio: 1/1;
     margin-bottom: 20px;
 
@@ -308,12 +324,14 @@ select {
 
     filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, .5));
 
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 .icon-image:hover {
     filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 1));
-    filter: grayscale(100%) brightness(200%)
+    filter: grayscale(100%) brightness(200%);
+
+    scale: 110%;
 }
 
 .icon-image.streamlined-icon {
@@ -328,6 +346,18 @@ select {
     background-image: url('assets/wind-rose.png');
 }
 
+.icon-image.strategic-icon {
+    background-image: url('assets/puzzle.png');
+}
+
+.icon-image.exponential-icon {
+    background-image: url('assets/start-up.png');
+}
+
+.icon-image.collaborative-icon {
+    background-image: url('assets/circles.png');
+}
+
 /* - - - - - - - - RESPONSIVITY - - - - - - - - */
 
 @media screen and (max-width: 1024px) {
@@ -338,15 +368,36 @@ select {
     .main-wrapper.visionary-objective.mobile {
         display: flex;
     }
+
+    .icon-image {
+        width: 50px;
+    }
+
+    .icon-text {
+        font-size: 12px;
+    }
 }
 
 @media screen and (max-width: 950px) {
     .icon-image {
-        width: 60px;
+        width: 40px;
     }
 }
 
-@media screen and (max-width: 880px) {}
+@media screen and (max-width: 810px) {
+
+    .main-wrapper.strategic-partnership {
+        flex-wrap: wrap-reverse;
+    }
+
+    .card-title-wrapper {
+        flex-wrap: wrap;
+
+        min-width: 100%;
+        max-width: 100%;
+        width: 100%;
+    }
+}
 
 @media screen and (max-width: 600px) {
     .main-wrapper.visionary-objective .card-title {
