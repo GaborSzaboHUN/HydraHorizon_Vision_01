@@ -60,7 +60,7 @@ select {
     position: relative;
 
     width: 100%;
-    height: 70vh;
+    height: 70svh;
     min-height: 620px;
 
     padding: 40px;
@@ -128,12 +128,15 @@ select {
 
 .card-title {
     position: relative;
+    top: 0;
 
     font-family: var(--title-font);
     font-size: 36px;
     font-weight: 500;
     text-align: center;
     color: #ffffff;
+    opacity: 1;
+
     transition: all .3s ease-in-out;
 }
 
@@ -181,10 +184,20 @@ select {
     display: none;
 }
 
-.main-wrapper {
-    height: 50svh;
-    min-height: 470px;
+.horizontal-separator {
+    position: sticky;
+    top: 0;
 
+    width: 100%;
+    height: 10px;
+    background-color: #000;
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, .75);
+
+    z-index: 10;
+}
+
+
+.main-wrapper {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
@@ -194,13 +207,30 @@ select {
     position: relative;
 
     min-width: 50%;
-    max-width: 50%;
-    width: 50%;
-    height: 100%;
+
+    height: 50svh;
+    min-height: 470px;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    transition: all .5s ease-in-out
+}
+
+.card-title-wrapper:hover {
+    min-width: 55%;
+}
+
+.card-title-wrapper:hover .card-title {
+    opacity: .5 !important;
+    font-size: 20px;
+    top: -40%;
+}
+
+.card-title-wrapper:hover .card-text-wrapper::after {
+    visibility: visible;
+    opacity: 1;
 }
 
 .card-title.half-page {
@@ -252,9 +282,11 @@ select {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    gap: 40px;
 
-    height: 100%;
     width: 100%;
+    height: 50svh;
+    min-height: 470px;
 
     padding: 60px 40px;
 
@@ -280,13 +312,40 @@ select {
     transform: rotate(0deg);
 }
 
+.card-text-wrapper::after {
+    content: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"%3E%3Cpath fill="%23ffffff" d="M352 96l64 0c17.7 0 32 14.3 32 32l0 256c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0c53 0 96-43 96-96l0-256c0-53-43-96-96-96l-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32zm-9.4 182.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L242.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"%3E%3C/path%3E%3C/svg%3E');
+
+    position: absolute;
+    top: 20px;
+
+    display: block;
+
+    width: 25px;
+
+    opacity: 0;
+    transition: all 0.6s ease-in-out;
+}
+
+.card-title-wrapper:hover+.card-text-wrapper::after {
+    opacity: 1;
+    cursor: pointer;
+}
+
 .holistic-integration .card-text-wrapper::before {
     right: 0;
+}
+
+.holistic-integration .card-text-wrapper::after {
+    transform: rotate(180deg);
 }
 
 .strategic-partnership .card-text-wrapper::before {
     left: 0;
     transform: rotate(270deg);
+}
+
+.strategic-partnership .card-text-wrapper::after {
+    right: 40px;
 }
 
 .card-text-wrapper .card-text {
@@ -373,7 +432,7 @@ select {
         width: 50px;
     }
 
-    .icon-text {
+    .icon-wrapper .icon-text {
         font-size: 12px;
     }
 }
@@ -386,6 +445,10 @@ select {
 
 @media screen and (max-width: 810px) {
 
+    .main-wrapper.holistic-integration {
+        flex-wrap: wrap;
+    }
+
     .main-wrapper.strategic-partnership {
         flex-wrap: wrap-reverse;
     }
@@ -396,6 +459,16 @@ select {
         min-width: 100%;
         max-width: 100%;
         width: 100%;
+    }
+
+    .card-text-wrapper {
+        height: unset;
+        min-height: unset;
+    }
+
+    .holistic-integration .card-text-wrapper::after,
+    .strategic-partnership .card-text-wrapper::after {
+        transform: rotate(90deg);
     }
 }
 
@@ -413,9 +486,7 @@ select {
     .hydra-card.visionary-card {
         padding: 20px 25px 30px;
     }
-}
 
-@media screen and (max-width: 450px) {
     .main-wrapper.visionary-objective.mobile {
         padding: 25px;
     }
@@ -426,5 +497,17 @@ select {
 
     .main-wrapper.visionary-objective .card-text {
         font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .main-wrapper.visionary-objective .card-text {
+        font-size: 12px;
+        line-height: 20px;
+    }
+
+    .icon-wrapper .icon-text {
+        font-size: 10px;
+        line-height: 16px;
     }
 }
